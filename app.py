@@ -1,8 +1,6 @@
 import os
 
 restaurantes = ['Pizzaria do Mateus', 'Sushi do João', 'Churrascaria do Carlos']
-endereco = ['Rua das Flores, 123', 'Avenida Brasil, 456', 'Praça Central, 789']
-telefone = [111, 2222, 3333]
 
 def exibir_nome_do_programa():
 
@@ -15,38 +13,38 @@ def exibir_opcoes():
 
 
 def finalizar_app():
-    os.system('cls')
-    print('Obrigado por usar o Sabor Express!')
+    exibir_subtitulo('Finalizando o aplicativo...')
     exit()
+    
+def voltar_ao_menu_principal():
+    print('Voltando ao menu principal...\n')
+    input('Pressione Enter para continuar...')
+    main()
     
 def opcao_invalida():
     print('Opção inválida, tente novamente.\n')
-    input('Pressione Enter para continuar...')
-    main()
+    voltar_ao_menu_principal()
+    
+def exibir_subtitulo(texto):
+    os.system('cls')
+    print(texto)
+    print('\n' + '-' * len(texto) + '\n')
 
 def cadastrar_novo_restaurante():
-    os.system('cls')
-    print('Cadastrar novo restaurante\n')
+    exibir_subtitulo('Cadastrar novo restaurante')
     nome = input('Nome do restaurante: ')
     restaurantes.append(nome)
-    endereco = input('Endereço do restaurante: ')
-    restaurantes.append(endereco)
-    telefone = input('Telefone do restaurante: ')
-    restaurantes.append(telefone)
     print(f'\nRestaurante {nome} cadastrado com sucesso!\n')
-    input('Pressione Enter para continuar...')
-    main()
+    voltar_ao_menu_principal()
 
 def listar_restaurantes():
-    os.system('cls')
-    print('Listar Restaurantes\n')
+    exibir_subtitulo('Listar Restaurantes')
     if not restaurantes:
         print('Nenhum restaurante cadastrado.\n')
     else:
-        for i, restaurante in enumerate(restaurantes):
-            print(f'{i + 1}. {restaurante} - Endereço: {endereco} - Telefone: {telefone[i]}')
-    input('Pressione Enter para continuar...')
-    main()
+        for restaurante in restaurantes:
+            print(f'. {restaurante}')
+    voltar_ao_menu_principal()
 
 def escolher_opcao():
     try:
